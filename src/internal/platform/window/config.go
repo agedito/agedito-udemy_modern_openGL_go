@@ -1,6 +1,6 @@
-package config
+package window
 
-type WindowConfig struct {
+type Config struct {
 	Title  string
 	Width  int
 	Height int

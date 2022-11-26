@@ -5,12 +5,12 @@ import (
 )
 
 type Window struct {
-	title  string
+	config Config
 	window *glfw.Window
 }
 
-func (_window *Window) Create(_title string, _width int, _height int) error {
-	_window.title = _title
+func (_window *Window) Create(_config Config) error {
+	_window.config = _config
 
 	initErr := glfw.Init()
 	if initErr != nil {
@@ -23,7 +23,7 @@ func (_window *Window) Create(_title string, _width int, _height int) error {
 	glfw.WindowHint(glfw.OpenGLProfile, glfw.OpenGLCoreProfile)
 	glfw.WindowHint(glfw.OpenGLForwardCompatible, glfw.True)
 
-	_glfwWindow, creationErr := glfw.CreateWindow(_width, _height, _title, nil, nil)
+	_glfwWindow, creationErr := glfw.CreateWindow(_config.Width, _config.Height, _config.Title, nil, nil)
 	if creationErr != nil {
 		return creationErr
 	}
