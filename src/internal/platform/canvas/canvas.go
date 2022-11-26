@@ -1,9 +1,8 @@
 package canvas
 
 import (
-	"fmt"
+	"agedito/udemy/modernOpenGL/internal/domain/vertexs"
 	"github.com/go-gl/gl/v4.6-core/gl"
-	"unsafe"
 )
 
 var (
@@ -13,7 +12,6 @@ var (
 		0.5, -0.5, 0, // right
 	}
 
-	vboId uint32
 	vaoId uint32
 )
 
@@ -29,14 +27,14 @@ func (_canvas *Canvas) Create(_config Config) error {
 		return _openGlInitErr
 	}
 
-	gl.GenBuffers(1, &vboId)
-	gl.BindBuffer(gl.ARRAY_BUFFER, vboId)
-	fmt.Println(len(vertices), unsafe.Sizeof(vertices), unsafe.Sizeof(vertices[0]))
-	gl.BufferData(gl.ARRAY_BUFFER, 4*len(vertices), gl.Ptr(vertices), gl.STATIC_DRAW) // 4 is because float32 is 4 bytes long
+	_vbo := vertexs.VBO{}
+	_vbo.Create(vertices)
+
 	gl.GenVertexArrays(1, &vaoId)
 	gl.BindVertexArray(vaoId)
 	gl.EnableVertexAttribArray(0)
-	gl.BindBuffer(gl.ARRAY_BUFFER, vboId)
+
+	_vbo.Activate()
 	gl.VertexAttribPointer(0, 3, gl.FLOAT, false, 0, nil)
 
 	return nil
