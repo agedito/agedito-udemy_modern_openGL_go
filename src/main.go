@@ -1,22 +1,16 @@
 package main
 
 import (
-	"agedito/udemy/modernOpenGL/internal/platform/canvas"
-	"agedito/udemy/modernOpenGL/internal/platform/window"
+	"agedito/udemy/modernOpenGL/bootstrap"
+	"agedito/udemy/modernOpenGL/internal/application/config"
 )
 
 func main() {
-	_window := window.Window{}
-	_canvas := canvas.Canvas{}
-
-	_ = _window.Create("My first window", 800, 800)
-	_ = _canvas.Create()
-
-	for _window.IsRunning() {
-		_canvas.Draw()
-		_window.Swap()
+	_windowConfig := config.WindowConfig{
+		Title:  "My first window",
+		Width:  800,
+		Height: 800,
 	}
 
-	_canvas.Terminate()
-	_window.Terminate()
+	bootstrap.Run(_windowConfig)
 }
