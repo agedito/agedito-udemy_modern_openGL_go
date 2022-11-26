@@ -1,7 +1,7 @@
-package config
+package canvas
 
 import "agedito/udemy/modernOpenGL/internal/domain/color"
 
-type CanvasConfig struct {
+type Config struct {
 	ClearColor color.Color
 }

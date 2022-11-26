@@ -1,8 +1,8 @@
 package main
 
 import (
-	"agedito/udemy/modernOpenGL/internal/application/config"
 	"agedito/udemy/modernOpenGL/internal/domain/color"
+	"agedito/udemy/modernOpenGL/internal/platform/canvas"
 	"agedito/udemy/modernOpenGL/internal/platform/window"
 )
 
@@ -12,6 +12,6 @@ var _windowConfig = window.Config{
 	Height: 800,
 }
 
-var _canvasConfig = config.CanvasConfig{
+var _canvasConfig = canvas.Config{
 	ClearColor: color.Color{Red: 0.1, Green: 0.2, Blue: 0.3},
 }

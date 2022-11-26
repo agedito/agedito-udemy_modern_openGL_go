@@ -1,15 +1,14 @@
 package canvas
 
 import (
-	"agedito/udemy/modernOpenGL/internal/application/config"
 	"github.com/go-gl/gl/v4.6-core/gl"
 )
 
 type Canvas struct {
-	config config.CanvasConfig
+	config Config
 }
 
-func (_canvas *Canvas) Create(_config config.CanvasConfig) error {
+func (_canvas *Canvas) Create(_config Config) error {
 	_canvas.config = _config
 
 	_openGlInitErr := gl.Init()
