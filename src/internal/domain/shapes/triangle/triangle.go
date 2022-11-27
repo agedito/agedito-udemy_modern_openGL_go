@@ -24,3 +24,7 @@ func (_triangle *Triangle) Create() {
 func (_triangle *Triangle) Draw() {
 	gl.DrawArrays(gl.TRIANGLES, 0, 3)
 }
+
+func (_triangle *Triangle) Activate() {
+	_triangle.vao.Activate()
+}
